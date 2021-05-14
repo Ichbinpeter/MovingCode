@@ -1,0 +1,37 @@
+let demo = document.querySelector('#demo');
+let string = `
+你好,我是一名前端新人
+接下来我要加样式了
+我要加的样式是
+body{
+    color:red;
+}
+`;
+
+let string2 = '';
+
+console.log(string.length)
+
+let n = 0;
+
+demo.innerHTML = string.substring(0,n);
+
+let step = () => {
+    setTimeout(() => {
+        console.log(n);
+        n = n + 1;
+        if (string[n] === '\n') {
+            string2 = string2 + '<br>';//如果是回车,就不照搬
+        } else {
+            string2=string2+string[n]//如果是回车就照搬     
+        }
+        demo.innerHTML = string2;
+        
+        if (n < string.length) {
+            step()
+        }
+        
+    }, 100)
+}
+
+step()
